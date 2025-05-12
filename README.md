@@ -1,21 +1,25 @@
-# Zip Solver
+# Tango Puzzle Solver
 
-This project detects and solves LinkedIn Zip mazes. It uses OpenCV for image processing and Tesseract OCR to read labels from the board.
+This project detects and solves 6x6 Tango puzzles from images of LinkedIn Tango. It uses OpenCV for visual processing and constraint-based logic to deduce valid solutions based on cell contents and relationship markers.
 
 ## Features
 
-- Automatically detects vertical and horizontal walls on a 6x6 grid.
-- Uses Tesseract OCR to identify numbered labels.
-- Finds a valid path visiting all labels in order.
-- Outputs the solution path on the original image.
+- Detects "C" and "M" markers using color recognition.
+- Identifies "equals" (=) and "excludes" (X) constraints between adjacent cells via template matching.
+- Enforces no-three-in-a-row and balancing constraints for valid logical deduction.
+- Overlays the final solution onto the original puzzle image.
 
 ## Files
 
-- `zip_algo.py`: Main script to read the puzzle image, detect walls and labels, solve the maze, and write the solution image.
-- `board_reader.py`: Contains logic for detecting grid walls and extracting label positions using OCR.
-- `puzzle_1.png`: Input image of the maze.
-- `puzzle_1_detected.png`: Debug image with detected walls and labels.
-- `solved.png`: Output image with the solution path overlaid.
+- `main.py`: Main script to process the puzzle image, run the solver, and print the solution.
+- `read_board.py`: Handles image parsing, color and symbol detection, and constraint extraction.
+- `tango_algo.py`: Contains the logic solver implementing constraint propagation and backtracking.
+- `overlay_solution.py`: Writes the solution on top of the puzzle image for visualization.
+- `puzzle.png`: Input image containing the puzzle to solve.
+- `detections.png`: Debug image showing detected symbols and constraints.
+- `filled.png`: Final output image with the solution filled in.
+- `x_template.png`: Template for detecting the "X" constraint.
+- `equals_template.png`: Template for detecting the "=" constraint.
 
 ## Requirements
 
@@ -23,14 +27,13 @@ Make sure you have the following installed:
 
 - Python 3.x
 - OpenCV (`opencv-python`)
-- Pillow (`Pillow`)
-- pytesseract (`pytesseract`)
-- Tesseract OCR engine
-
-You **must** have [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) installed on your system and properly configured. On Ubuntu, install with:
+- NumPy (`numpy`)
 
 ## Example
-![puzzle_1](https://github.com/user-attachments/assets/c2d025c1-5f45-4546-894d-d6bcb8e8f319)
-![puzzle_1_detected](https://github.com/user-attachments/assets/8c2ec8ae-8e82-4bdd-9a73-1510130bb1d2)
-![solved](https://github.com/user-attachments/assets/132db5af-a810-47f0-8210-f738f80dfe58)
+
+Below is a sample pipeline from raw puzzle to solution:
+
+![puzzle](https://github.com/user-attachments/assets/97a4bc93-9e05-4bd3-b895-f4d110cf98ea)
+![detections](https://github.com/user-attachments/assets/fc41f94a-1cf7-4a08-9e5e-5f4d9ea8bde4)
+![filled](https://github.com/user-attachments/assets/63e9f58e-e90f-4659-818c-dcdaa558b608)
 
