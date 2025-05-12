@@ -27,7 +27,7 @@ Make sure you have the following installed:
 - pytesseract (pytesseract)
 - Tesseract OCR engine
 
-You must have [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) installed on your system and properly configured. On Ubuntu, install with:
+You must have [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) installed on your system and properly configured.
 
 ## Example
 ![puzzle_1](https://github.com/user-attachments/assets/d893dcd8-af25-4600-84b6-d0ecbc3199c5)
